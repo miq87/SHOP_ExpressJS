@@ -6,12 +6,12 @@ const Product = require('../models/product');
 
 //  route z listą wszystkich produktów
 router.get('/', (req, res, next) => {
+  //res.setHeader('Access-Control-Allow-Origin', '*')
   Product.find()
   .exec()
-  .then(prodList => {
+  .then(products => {
     res.status(200).json({
-      msg: 'Lista wszystkich produktów',
-      list: prodList
+      products
     });
   })
   .catch(err => {

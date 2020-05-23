@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
   .then(products => {
     res.status(200).send(products)
     //res.status(200).json({
-     // products
+     //products
     //});
   })
   .catch(err => {

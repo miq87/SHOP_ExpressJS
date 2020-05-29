@@ -5,12 +5,12 @@ mongoose.connect(
     { useNewUrlParser: true, useUnifiedTopology: true }
 );
 
-const productSchema = mongoose.Schema({
+const cartSchema = mongoose.Schema({
     _id: mongoose.Types.ObjectId,
-    name: String,
-    description: String,
+    productId: Number,
+    productName: String,
     price: Number,
-    imgUrl: String
+    qty: Number
 });
 
-module.exports = mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Cart', cartSchema);

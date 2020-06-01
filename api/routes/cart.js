@@ -17,7 +17,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const cart = new Cart({
-    _id: mongoose.Types.ObjectId(),
+    //_id: mongoose.Types.ObjectId(),
     productId: req.body.productId,
     productName: req.body.productName,
     price: req.body.price,

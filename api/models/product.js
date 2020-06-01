@@ -6,9 +6,9 @@ mongoose.connect(
 );
 
 const productSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
+    //_id: mongoose.Types.ObjectId,
     name: String,
-    description: String,
+    desc: String,
     price: Number,
     imgUrl: String
 });

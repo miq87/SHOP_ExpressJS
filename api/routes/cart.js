@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const Cart = require('../models/cart');
 
@@ -17,8 +17,9 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const cart = new Cart({
-    productId: req.body._id,
-    productName: req.body.name,
+    _id: mongoose.Types.ObjectId(),
+    productId: req.body.productId,
+    productName: req.body.productName,
     price: req.body.price,
     qty: 1
   });
@@ -30,7 +31,10 @@ router.post('/', (req, res, next) => {
     });
   })
   .catch(err => {
-    res.status(500).json({ blad:err })
+    res.status(500).json({ 
+      Koszyk: cart,
+      blad: err
+    })
   });
 });
 

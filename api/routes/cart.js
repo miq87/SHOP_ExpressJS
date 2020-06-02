@@ -16,9 +16,9 @@ router.get('/', (req, res, next) => {
 });
 
 router.post('/', (req, res, next) => {
-  const id = req.body.productId
+  const id = req.body._id
   
-  const filter = { "productId": id };
+  const filter = { "_id": id };
   Cart.findOneAndUpdate(filter, { $inc: { qty: 1 } }, { new: true })
   .exec()
   .then(doc => {
@@ -30,7 +30,7 @@ router.post('/', (req, res, next) => {
       if(!req.body.price) req.body.price = 0
 
       const cart = new Cart({
-        productId: req.body.productId,
+        _id: id,
         productName: req.body.productName,
         price: req.body.price,
         qty: 1

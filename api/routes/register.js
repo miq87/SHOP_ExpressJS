@@ -23,7 +23,7 @@ router.post('/', (req, res, next) => {
     .then(result => {
       res.status(200).json({
         msg: 'Dodano nowego usera!',
-        data: product
+        data: result
       })
     })
     .catch(err => {

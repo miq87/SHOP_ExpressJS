@@ -7,7 +7,7 @@ mongoose.connect(
 
 const userSchema = mongoose.Schema({
     //_id: mongoose.Types.ObjectId,
-    username: String,
+    //username: String,
     email: String,
     password: String
 })

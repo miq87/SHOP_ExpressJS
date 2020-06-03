@@ -1,9 +1,9 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 mongoose.connect(
     'mongodb+srv://shop:' + process.env.ATLAS_PW + '@cluster0-ab5ek.gcp.mongodb.net/shop?retryWrites=true&w=majority',
     { useNewUrlParser: true, useUnifiedTopology: true }
-);
+)
 
 const cartSchema = mongoose.Schema({
     //_id: mongoose.Types.ObjectId,
@@ -11,6 +11,6 @@ const cartSchema = mongoose.Schema({
     productName: String,
     price: Number,
     qty: Number
-});
+})
 
-module.exports = mongoose.model('Cart', cartSchema);
+module.exports = mongoose.model('Cart', cartSchema)

@@ -43,9 +43,11 @@ router.post('/', (req, res, next) => {
   })
 })
 
-router.patch('/', (req, res, next) => {
+router.patch('/:action', (req, res, next) => {
   const id = req.body._id
-  const action = req.body.action
+  const action = req.params.action
+
+  console.log(req.param.action)
 
   if(action === "inc") {
     Cart.findByIdAndUpdate(id, { $inc: { qty: 1 } }, { new: true })
@@ -53,7 +55,7 @@ router.patch('/', (req, res, next) => {
     .then(doc => {
       if(doc) {
         res.status(200).json({
-          msg: 'Zmieniono dane produktu nr ' + id,
+          msg: 'Increase ' + id,
           data: doc
         })
       }
@@ -72,7 +74,7 @@ router.patch('/', (req, res, next) => {
     .then(doc => {
       if(doc) {
         res.status(200).json({
-          msg: 'Zmieniono dane produktu nr ' + id,
+          msg: 'Decrease ' + id,
           data: doc
         })
       }

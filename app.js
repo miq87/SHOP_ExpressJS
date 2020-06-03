@@ -12,11 +12,13 @@ mongoose.connect(
 
 const productRoutes = require('./api/routes/products')
 const cartRoutes = require('./api/routes/cart')
+const userRoutes = require('./api/routes/user')
 
 app.use(morgan('dev'))
 app.use(cors())
 app.use(bodyParser.json())
 app.use('/products', productRoutes)
 app.use('/cart', cartRoutes)
+app.use('/user', userRoutes)
 
 module.exports = app

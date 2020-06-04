@@ -6,7 +6,7 @@ const User = require('../models/user')
 
 router.get('/', (req, res, next) => {
     res.status(200).json({
-        msg: 'Empty'
+        msg: 'There is no GET in login'
     })
 })
 
@@ -35,7 +35,7 @@ router.post('/', (req, res, next) => {
     })
     .catch(err => {
         console.log(err)
-        res.status(500).json({ blad: err })
+        res.status(500).json({ Error: err })
     })
     
   })

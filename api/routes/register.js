@@ -5,13 +5,8 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 
 router.get('/', (req, res, next) => {
-  User.find()
-  .exec()
-  .then(user => {
-    res.status(200).send(user)
-  })
-  .catch(err => {
-    res.status(500).json({ Error: err })
+  res.status(200).json({
+    msg: 'There is no GET in register!'
   })
 })
 
@@ -27,7 +22,7 @@ router.post('/', (req, res, next) => {
       })
     })
     .catch(err => {
-      res.status(500).json({ blad: err })
+      res.status(500).json({ Error: err })
     })
   })
 

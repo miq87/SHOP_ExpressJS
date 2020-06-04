@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
     res.status(200).send(products)
   })
   .catch(err => {
-    res.status(500).json({ blad: err })
+    res.status(500).send(err)
   })
 })
 
@@ -24,13 +24,10 @@ router.post('/', (req, res, next) => {
   })
   product.save()
   .then(result => {
-    res.status(200).json({
-      msg: 'Dodano nowy produkt',
-      daneProduktu: product
-    })
+    res.status(200).send('Dodano nowy produkt')
   })
   .catch(err => {
-    res.status(500).json({ blad: err })
+    res.status(500).send(err)
   })
 })
 
@@ -39,10 +36,7 @@ router.get('/:productId', (req, res, next) => {
   Product.findById(id)
   .exec()
   .then(doc => {
-    res.status(200).json({
-      msg: 'Szczegóły produktu o nr ' + id,
-      daneProduktu: doc
-    })
+    res.status(200).send(doc)
   })
   .catch(err => {
     res.status(500).json({ blad: err })
@@ -63,15 +57,9 @@ router.patch('/:productId', (req, res, next) => {
   .exec()
   .then(doc => {
     if(doc) {
-      res.status(200).json({
-        msg: 'Zmieniono dane produktu nr ' + id,
-        noweDane: doc
-      })
+      res.status(200).send(doc)
     }
-    res.status(200).json({
-      msg: 'Nie ma produktu o nr ' + id,
-      noweDane: doc
-    })
+    res.status(200).send('Brak produktu')
   })
   .catch(err => {
     res.status(500).json({ blad: err })
@@ -84,16 +72,12 @@ router.delete('/:productId', (req, res, next) => {
   .exec()
   .then(doc =>{
     if(doc) {
-      res.status(200).json({
-        msg: 'Usunięto produkt o nr ' + id
-      })
+      res.status(200).send('Usunięto produkt!')
     }
-    res.status(200).json({
-      msg: 'Nie ma już produktu o nr ' + id
-    })
+    res.status(200).send('Nie ma już tego produktu!')
   })
   .catch(err => {
-    res.status(500).json({ blad: err })
+    res.status(500).send(err)
   })
 })
 

@@ -5,24 +5,26 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 
 router.get('/', (req, res, next) => {
-  res.status(200).json({
-    msg: 'There is no GET in register!'
+  User.find()
+  .exec()
+  .then(users => {
+    res.status(200).send(users)
   })
+  .catch(err => {
+    res.status(500).send(err)
+  })
+  
 })
 
 router.post('/', (req, res, next) => {
     let userData = req.body
-
     const user = new User(userData)
     user.save()
     .then(result => {
-      res.status(200).json({
-        msg: 'Dodano nowego usera!',
-        data: result
-      })
+      res.status(200).send('Dodano nowego usera!')
     })
     .catch(err => {
-      res.status(500).json({ Error: err })
+      res.status(500).send(err)
     })
   })
 

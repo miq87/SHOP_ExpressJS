@@ -26,7 +26,7 @@ router.post('/', (req, res, next) => {
     }
     const cart = new Cart({
       _id: id,
-      productName: req.body.productName,
+      name: req.body.name,
       price: req.body.price,
       qty: 1
     })

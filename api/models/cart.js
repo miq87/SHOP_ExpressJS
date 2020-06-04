@@ -7,8 +7,7 @@ mongoose.connect(
 
 const cartSchema = mongoose.Schema({
     //_id: mongoose.Types.ObjectId,
-    //productId: String,
-    productName: String,
+    name: String,
     price: Number,
     qty: Number
 })

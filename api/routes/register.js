@@ -32,9 +32,8 @@ router.post('/', (req, res, next) => {
 
 router.delete('/', (req, res, next) => {  
   User.remove()
-  .exec()
-  .then(doc => {
-    console.log(doc)
+  .then(() => {
+    res.status(200).json({ msg: 'Usunąłem wszystko!' })
   })
   .catch(err => {
     res.status(500).json({ Error: err })

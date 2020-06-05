@@ -32,6 +32,7 @@ router.post('/', (req, res, next) => {
 
 router.delete('/', (req, res, next) => {  
   User.remove()
+  .exec()
   .then(() => {
     res.status(200).json({ msg: 'Usunąłem wszystko!' })
   })

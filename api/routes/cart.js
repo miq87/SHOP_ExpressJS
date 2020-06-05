@@ -95,17 +95,13 @@ router.delete('/:productId', (req, res, next) => {
   .exec()
   .then(doc =>{
     if(doc) {
-      res.status(200).json({
-        msg: 'Usunięto produkt z koszyka o id ' + id
-      })
+      res.status(200).json({ msg: 'Usunięto produkt z koszyka o id ' + id })
     }
-    res.status(200).json({
-      msg: 'Nie ma już produktu w koszyku o id ' + id
-    })
+    res.status(200).json({ msg: 'Nie ma już produktu w koszyku o id ' + id })
   })
   .catch(err => {
     res.status(500).json({ Error: err })
-  })
+})
 })
 
 module.exports = router

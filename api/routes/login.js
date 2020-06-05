@@ -11,7 +11,6 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     let userData = req.body
-    console.log(userData)
 
     User.findOne({ email: userData.email })
     .exec()

@@ -17,17 +17,28 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
-    let userData = req.body
-    const user = new User(userData)
-    user.save()
-    .then(doc => {
-      let payload = { subject: doc._id }
-      let token = jwt.sign(payload, 'secretKey')
-      res.status(200).json({token})
-    })
-    .catch(err => {
-      res.status(500).json({ Error: err })
-    })
+  let userData = req.body
+  const user = new User(userData)
+  user.save()
+  .then(doc => {
+    let payload = { subject: doc._id }
+    let token = jwt.sign(payload, 'secretKey')
+    res.status(200).json({token})
   })
+  .catch(err => {
+    res.status(500).json({ Error: err })
+  })
+})
+
+router.delete('/', (req, res, next) => {  
+  User.remove()
+  .exec()
+  .then(doc => {
+    console.log(doc)
+  })
+  .catch(err => {
+    res.status(500).json({ Error: err })
+  })
+})
 
 module.exports = router
